@@ -47,4 +47,7 @@
 
 ## 注意点
 
-SDK52で作成。カメラまわりのコードがずいぶん変化しています。
+* SDK52で作成。カメラまわりのコードがずいぶん変化しています。
+* 「cameraRef.current.takePictureAsync()」を使いたい場合は、<br>
+<CameraView style={styles.camera} ref={cameraRef} />のようです。<br>
+"https://stackoverflow.com/questions/79202304/expo-camera-live-fee-in-sdk-51-aint-working-in-sdk-52-but"を参考にしてください。
