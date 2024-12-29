@@ -13,8 +13,7 @@ export default function App() {
   const [permission, requestPermission] = useCameraPermissions();
 
   const handleBarCodeScanned = ({ type, data }: DetectedCode) => {
-    // 最後の20件までチェック
-    const recentCodes = detectedCodes.slice(-20); // 最後の20件を取得
+    const recentCodes = detectedCodes.slice(-20);
     const isDuplicate = recentCodes.some((code) => code.type === type && code.data === data);
 
     if (!isDuplicate) {
