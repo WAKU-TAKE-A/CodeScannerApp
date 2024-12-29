@@ -21,7 +21,7 @@
 1. エラーハンドリング<br>
 ・カメラの権限が拒否された場合や、カメラが利用できない場合には適切なメッセージが表示されます。
 
-## 作成手順
+## 本プログラムを作成した手順
 
 ```shell
 > npx create-expo-app CodeScannerApp -t
@@ -32,6 +32,8 @@
 > npx expo install expo-camera
 
 > yarn
+
+ChatGPTと二人三脚でコードを作成。
 
 > yarn start
 
