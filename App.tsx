@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View, Button, FlatList } from "react-native";
 import { CameraView, useCameraPermissions } from 'expo-camera';
 
@@ -62,13 +62,22 @@ export default function App() {
           {detectedCodes.length === 0 ? (
             <Text>No code.</Text>
           ) : (
-            <FlatList
-              data={detectedCodes}
-              keyExtractor={(_, index) => index.toString()}
-              renderItem={({ item }) => (
-                <Text>{`Type: ${item.type}, Data: ${item.data}`}</Text>
-              )}
-            />
+            <View style={styles.tableContainer}>
+              <View style={styles.tableHeader}>
+                <Text style={styles.tableHeaderText}>Type</Text>
+                <Text style={styles.tableHeaderText}>Data</Text>
+              </View>
+              <FlatList
+                data={detectedCodes}
+                keyExtractor={(_, index) => index.toString()}
+                renderItem={({ item }) => (
+                  <View style={styles.tableRow}>
+                    <Text style={styles.tableCell}>{item.type}</Text>
+                    <Text style={styles.tableCell}>{item.data}</Text>
+                  </View>
+                )}
+              />
+            </View>
           )}
         </>
       )}
@@ -92,5 +101,33 @@ const styles = StyleSheet.create({
   message: {
     textAlign: 'center',
     paddingBottom: 10,
+  },
+  tableContainer: {
+    width: '100%',
+    marginTop: 20,
+    borderWidth: 1,
+    borderColor: "#ccc",
+  },
+  tableHeader: {
+    flexDirection: "row",
+    backgroundColor: "#f2f2f2",
+    borderBottomWidth: 1,
+    borderColor: "#ccc",
+    padding: 8,
+  },
+  tableHeaderText: {
+    flex: 1,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  tableRow: {
+    flexDirection: "row",
+    borderBottomWidth: 1,
+    borderColor: "#ccc",
+    padding: 8,
+  },
+  tableCell: {
+    flex: 1,
+    textAlign: "center",
   },
 });
