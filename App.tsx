@@ -16,7 +16,7 @@ export default function App() {
     const recentCodes = detectedCodes.slice(-20);
     const isDuplicate = recentCodes.some((code) => code.type === type && code.data === data);
 
-    if (!isDuplicate) {
+    if (!isDuplicate && (type === "qr" || type === "ean13")) {
       setDetectedCodes((prev) => [...prev, { type, data }]);
     }
   };
